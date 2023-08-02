@@ -13,8 +13,8 @@ public class HelloController {
 		return "hellow/hello";
 	}
 	
-	@GetMapping("/hello/1")
-	public String hello1() {
-		return "hellow/hello";
+	@GetMapping("/hello/jsp")
+	public String helloJsp() {
+		return "hello/hello";
 	}
 }
