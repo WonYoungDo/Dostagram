@@ -10,9 +10,34 @@
 <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
 <body>
-	<div id="wrap" class="bg-info">
+	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>		
-		<section class="bg-success"></section>
+		<section class="d-flex justify-content-center">
+			<div class="join-box col-4">
+				<div class="logo d-flex justify-content-center">
+					<div>
+						<img height="50" alt="인스타그램 로고" src="/image/인스타그램 로고.jpg">
+					</div>
+					<div>
+						<h2 class="text-primary mt-1">Dostagram</h2>
+					</div>
+				</div>
+				<div class="join pt-3 text-center">
+					<label class="text-primary">이름</label><input type="text" class="col-8 form-control mb-1">
+					<label class="text-primary">아이디</label><input type="text" class="col-8 form-control mb-1">
+					<label class="text-primary">비밀번호</label><input type="password" class="col-8 form-control mb-1">
+					<div class="d-flex">
+						<div class="col-9">
+							<label class="text-primary">비밀번호 확인</label><input type="password" class="form-control mb-1">
+						</div>
+						<button type="button" class="btn col-3">중복확인</button>
+					</div>
+					<label class="text-primary">전화번호</label><input type="text" class="col-8 form-control mb-1">
+					<label class="text-primary">이메일</label><input type="text" class="col-8 form-control mb-4">
+					<button type="button" class="btn btn-block col-8">회원가입</button>
+				</div>
+			</div>
+		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>
 	

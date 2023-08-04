@@ -1,18 +1,23 @@
 @charset "UTF-8";
 
 #wrap {
-	height: 800px;
 	width: 1200px;
 	margin: auto;
+	background-color: black;
 }
 
 header {
-	height: 100px;
+	height: 80px;
 }
 
-section {
-	height: 600px;
+section > .join-box > .logo {
+	height: 50px;
 }
+
+section > .join-box > .join {
+	height: 550px;	
+}
+
 
 
 footer {
