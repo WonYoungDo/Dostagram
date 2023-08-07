@@ -9,8 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT INTO
 			`user`
 		(
-			`id`
-			, `loginId`
+			`loginId`
 			, `password`
 			, `email`
 			, `name`
@@ -18,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		)
 		Value
 		(
-			, #{loginId}
+			#{loginId}
 			, #{password}
 			, #{email}
 			, #{name}

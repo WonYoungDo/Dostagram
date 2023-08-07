@@ -17,5 +17,6 @@ public interface UserRepository {
 			, @Param("email") String email);
 	
 	// 로그인
-	public User selectUserList();
+	public User selectUserList(@Param("loginId") String loginId, @Param("password") String password);
+	
 }

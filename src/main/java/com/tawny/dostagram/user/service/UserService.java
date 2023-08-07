@@ -1,10 +1,11 @@
 package com.tawny.dostagram.user.service;
 
-import java.util.List;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tawny.dostagram.common.EncryptUrils;
 import com.tawny.dostagram.user.domain.User;
 import com.tawny.dostagram.user.repository.UserRepository;
 
@@ -27,8 +28,16 @@ public class UserService {
 	}
 	
 	// 로그인 기능
-	public List<User> getLogin() {
-		List<User> userList = userRepository.selectUserList();
+	public User getLogin(String loginId, String password, HttpSession session) {
+		
+		String ecryptPassword = EncryptUrils.md5(password);
+		
+		User userList = userRepository.selectUserList(loginId, ecryptPassword);
+		if(userList == null) { // 존재하지 않을 경우
+			return null;
+		} else { // 존재할 경우
+//			userList.get(0);
+		}
 		return userList;
 	}
 }

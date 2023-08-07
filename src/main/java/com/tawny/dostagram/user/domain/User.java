@@ -61,7 +61,5 @@ public class User {
 	public void setUpdatedAT(Date updatedAT) {
 		this.updatedAT = updatedAT;
 	}
-	
-	
-	
+
 }
