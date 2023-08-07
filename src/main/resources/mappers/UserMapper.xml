@@ -10,15 +10,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			`user`
 		(
 			`id`
-			`loginId`
-			`password`
-			`email`
-			`name`
-			`phoneNumber`
+			, `loginId`
+			, `password`
+			, `email`
+			, `name`
+			, `phoneNumber`
 		)
 		Value
 		(
-			#{id}
 			, #{loginId}
 			, #{password}
 			, #{email}
@@ -26,5 +25,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			, #{phoneNumber}
 		)
 	</insert>
-
+	
+	<select id="selectUserList" resultType="com.tawny.dostagram.user.domain.User" parameterType="map">
+		SELECT
+			`id`
+			, `loginId`
+			, `password`
+			, `email`
+			, `name`
+			, `phoneNumber`
+		FROM
+			`user`
+	</select>
 </mapper>

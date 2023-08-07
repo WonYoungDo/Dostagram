@@ -3,6 +3,8 @@ package com.tawny.dostagram.user.repository;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import com.tawny.dostagram.user.domain.User;
+
 @Repository
 public interface UserRepository {
 	
@@ -13,4 +15,7 @@ public interface UserRepository {
 			, @Param("name") String name
 			, @Param("phoneNumber") String phoneNumber
 			, @Param("email") String email);
+	
+	// 로그인
+	public User selectUserList();
 }

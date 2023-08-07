@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tawny.dostagram.user.domain.User;
 import com.tawny.dostagram.user.service.UserService;
 
 @RestController
@@ -18,6 +19,7 @@ public class UserRestController {
 	@Autowired
 	private UserService userService;
 	
+	// 회원가입 기능
 	@PostMapping("/join")
 	public Map<String, String> join(
 			@RequestParam("loginId") String loginId
@@ -36,5 +38,14 @@ public class UserRestController {
 		}
 		return resultMap;
 	}
-
+	
+	// 로그인 기능
+	public Map<String, String> login(@RequestParam("loginId") String loginId, @RequestParam("password") String password) {
+		
+		
+	}
+	
+	
+	
+	
 }
