@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>로그인</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
 	<div id="wrap">
@@ -17,7 +17,7 @@
 			<div class="join-box col-4">
 				<div class="logo d-flex justify-content-center">
 					<div>
-						<img height="50" alt="인스타그램 로고" src="/image/인스타그램 로고.jpg">
+						<img height="50" alt="인스타그램 로고" src="/static/image/인스타그램 로고.jpg">
 					</div>
 					<div>
 						<h2 class="text-info mt-1">Dostagram</h2>

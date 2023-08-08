@@ -1,22 +1,13 @@
 package com.tawny.dostagram.user.repository;
-
-import org.apache.ibatis.annotations.Param;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.tawny.dostagram.user.domain.User;
 
 @Repository
-public interface UserRepository {
+public interface UserRepository extends JpaRepository<User, Integer>{
 	
-	// 회원가입 (사용자가 입력한 정보를 입력받고 쿼리에 저장하는 기능)
-	public int insertJoin(
-			@Param("loginId") String loginId  
-			, @Param("password") String password
-			, @Param("name") String name
-			, @Param("phoneNumber") String phoneNumber
-			, @Param("email") String email);
-	
-	// 로그인
-	public User selectUserList(@Param("loginId") String loginId, @Param("password") String password);
-	
+	// 아이디가 중복 되는지 확인해주는 메소드
+	public int countByLoginId(String loginId);
+
 }
