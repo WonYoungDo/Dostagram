@@ -14,7 +14,7 @@
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		
 		<section class="d-flex justify-content-center">
-			<div class="join-box col-4">
+			<div class="login-box col-4">
 				<div class="logo d-flex justify-content-center">
 					<div>
 						<img height="50" alt="인스타그램 로고" src="/static/image/인스타그램 로고.jpg">
@@ -23,24 +23,32 @@
 						<h2 class="text-info mt-1">Dostagram</h2>
 					</div>
 				</div>
-				<div class="join pt-5">
+				<div class="login pt-5">
 					<div class="pt-4 ml-3 mr-3">
 					
 						<select class="form-control">
 							<option class="text-center">원영도</option>
 							<option class="text-center">유재석</option>
 						</select> <br>
-						<label class="text-info font-weight-bold pt-3">아이디</label>
-						<input type="text" class="col-12 form-control mb-2" id="idInput">
-						<label class="text-info font-weight-bold">비밀번호</label>
-						<input type="password" class="col-12 form-control mb-4" id="passwordInput">
-						<div>
-							<div class="d-flex justify-content-between mb-3">
-								<button type="button" class="btn col-3 btn-success font-weight-bold p-0" id="joinBtn">회원가입</button>
-								<button type="button" class="btn col-6 btn-success font-weight-bold p-0" id="findBtn">아이디/비밀번호 찾기</button>
+						<form id="loginForm">
+							<div class="mb-2">
+								<label class="text-info font-weight-bold pt-3">아이디</label>
+								<input type="text" class="col-12 form-control" id="idInput">
+								<div class="text-warning small d-none" id="idCheck">아이디를 입력해주세요!</div>	
 							</div>
-							<button type="button" class="btn btn-block col-12 btn-success font-weight-bold" id="loginBtn">로그인</button>
-						</div>
+							<div class="mb-3">
+								<label class="text-info font-weight-bold">비밀번호</label>
+								<input type="password" class="col-12 form-control" id="passwordInput">
+								<div class="text-warning small d-none" id="passwordCheck">비밀번호를 입력해주세요!</div>	
+							</div>
+							<div>
+								<div class="d-flex justify-content-between mb-3">
+									<a href="/user/join-view" class="btn col-3 btn-success p-0">회원가입</a>
+									<a href="#" class="btn btn-success p-0 col-6">아이디/비밀번호 찾기</a>
+								</div>
+								<button type="submit" class="btn btn-block col-12 btn-success font-weight-bold" id="loginBtn">로그인</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -48,8 +56,51 @@
 		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script>
+		$(document).ready(function() {
+			
+			// 엔터 키를 클릭했을 때 버튼이 클릭되 도록 form태그 안에 submit
+			$("#loginForm").on("submit", function(e) {
+				// 이벤트 고유 기능 취소
+				e.preventDefault();
+				
+				let id = $("#idInput").val();
+				let password = $("#passwordInput").val();
+				
+				// 유효성 검사
+				if(id == "") {
+					$("#idCheck").removeClass("d-none");
+					return;
+				} else {
+					$("#idCheck").addClass("d-none");
+				}
+				if(password == "") {
+					$("#passwordCheck").removeClass("d-none");
+					return;
+				} else {
+					$("#passwordCheck").addClass("d-none");
+				}
+				
+				$.ajax({
+					type:"post"
+					, url:"/user/login"
+					, data:{"loginId":id, "password":password}
+					, success:function(data) {
+						if(data.result == "success") {
+							location.href="/timeline-view";
+						} else {
+							alert("아이디와 비밀번호를 확인해주세요.");
+						}
+					}
+					, error:function() {
+						alert("로그인 에러");
+					}
+				});
+			});
+		});
+	</script>
 </body>
 </html>

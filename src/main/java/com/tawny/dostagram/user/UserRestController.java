@@ -3,6 +3,8 @@ package com.tawny.dostagram.user;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -54,6 +56,26 @@ public class UserRestController {
 		return resultMap;
 	}
 	
+	// 로그인 기능
+	@PostMapping("/login")
+	public Map<String, String> login(
+			@RequestParam("loginId") String loginId
+			, @RequestParam("password") String password
+			, HttpSession session) {
+		User user = userService.getUser(loginId, password);
+		Map<String, String> resultMap = new HashMap<>();
+		if(user != null) { // 입력받은 회원 정보가 저장되어 있을 때
+			resultMap.put("result", "success");
+			
+			// 필요한 사용자 정보를 세션에 저장
+			// user 테이블 id, user의 이름을 세션에 저장
+			session.setAttribute("userId", user.getId());
+			session.setAttribute("userName", user.getName());
+		} else {
+			resultMap.put("result", "fail");
+		}
+		return resultMap;
+	}
 	
 	
 	

@@ -18,6 +18,14 @@ section > .join-box > .join {
 	height: 550px;	
 }
 
+section > .login-box > .logo {
+	height: 50px;
+}
+
+section > .login-box > .login {
+	height: 550px;	
+}
+
 footer {
 	height: 100px;
 }

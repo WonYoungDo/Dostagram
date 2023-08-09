@@ -1,5 +1,7 @@
 package com.tawny.dostagram.user.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,4 +51,21 @@ public class UserService {
 		// 중복이 되었을 떄를 리턴
 		return count != 0;
 	}
+	
+	// 로그인 기능
+	public User getUser(String loginId, String password) {
+		
+		// 암호화한 비밀번호를 변수에 저장
+		String encryptPassword = EncryptUtils.md5(password);
+		
+		List<User> userList = userRepository.findByLoginIdAndPassword(loginId, encryptPassword);
+		if(userList.isEmpty()) { // 입력받은 정보가 없을 경우
+			return null;
+		} else {
+			return userList.get(0);
+		}
+	}
+	
+	
+	
 }
