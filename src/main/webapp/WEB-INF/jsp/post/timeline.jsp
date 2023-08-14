@@ -41,13 +41,14 @@
 				<div class="timeLine col-8 p-0 py-1">		
 					<!-- inputBox -->
 					<div class="input-box custom-border rounded">
-						<textarea rows="3" placeholder="나의 지금 상태를 입력해주세요." class="form-control border-0"></textarea>
+						<textarea rows="3" placeholder="나의 지금 상태를 입력해주세요." class="form-control border-0" id="contentsInput"></textarea>
 						<div class="d-flex justify-content-between px-2 pt-2">
 							<div>
-								<i class="bi bi-rocket-takeoff-fill icon-size-sm"></i>
-								<input type="file" class="d-none">
+								<i class="bi bi-rocket-takeoff-fill icon-size-sm" id="addIcon"></i>
+								<input type="file" class="d-none" id="addFile">
 							</div>
-							<button type="button" class="btn btn-sm">올리기</button>
+							<div class="text-danger small pt-2 d-none" id="guideInput">내용을 입력해주세요!</div>
+							<button type="button" class="btn btn-sm" id="uploadBtn">올리기</button>
 						</div>
 					</div>
 					<!-- /inputBox -->
@@ -55,7 +56,7 @@
 					<!-- timeLineList -->
 					<div class="mt-2 custom-border rounded">
 						<div class="d-flex justify-content-between align-items-center px-2">
-							<b>원영도</b>
+							<b>${userName }</b>
 							<i class="bi bi-three-dots icon-size-sm"></i>
 						</div>
 						<div>
@@ -67,7 +68,7 @@
 							<i class="bi bi-send-fill icon-size-xs"></i>						
 						</div>
 						<div class="border-top d-flex p-1">
-							<b class="pl-1 pr-4">원영도 : </b>
+							<b class="pl-1 pr-4">${userName } : </b>
 							안녕하세요.
 						</div>
 						<div class="border-top small d-flex align-items-center justify-content-between p-1">
@@ -95,5 +96,45 @@
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script>
+		$(document).ready(function() {
+			
+			// 나의 상태 버튼 
+			$("#uploadBtn").on("click", function() {
+				let contents = $("#contentsInput").val();
+				let file = $("#addFile").val();
+			
+				// 유효성 검사
+				if(contents == "") {
+					$("#guideInput").removeClass("d-none");
+					return;
+				} else {
+					$("#guideInput").addClass("d-none");
+				}
+				
+				$.ajax({
+					type:"post"
+					, url:"/post/create"
+					, data:{"contents":contents}
+					, success:function(data) {
+						if(data.result == "success") {
+							location.reload();
+						} else {							
+							alert("업로드 실패");
+						}
+					}
+					, error:function() {
+						alert("업로드 에러");
+					}
+				});
+			});
+			
+			// 아이콘 클릭시 사진 첨부 기능 수행
+			$("#addIcon").on("click", function() {
+				$("#addFile").click();
+			});
+		});
+	</script>
+	
 </body>
 </html>
