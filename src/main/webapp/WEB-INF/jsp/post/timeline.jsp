@@ -11,61 +11,81 @@
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
-	<div id="wrap" class="container">
+	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		<section class="d-flex">
 			<!-- menu -->
-			<div class="menu bg-warning col-3 my-1">
+			<div class="menu col-3 my-1 bg-white">
 				<!-- current-page -->
-				<div class="py-4 text-center text-info"><h1>타임라인</h1></div>
+				<div class="py-4 text-center text-dark"><h1>타임라인</h1></div>
 				<!-- /current-page -->			
 				<!-- menu-list -->
 				<div class="pt-2 pl-1">
 					<ul class="nav flex-column">
-						<li class="nav-items py-1"><h3><a class="nav-link text-info font-weight-bold" href="/post/timeline-view"><i class="bi bi-houses-fill text-info pr-2"></i>홈</a></h3></li>
-						<li class="nav-items"><h3><a class="nav-link text-info font-weight-bold" href="#"><i class="bi bi-chat-fill text-info pr-2"></i>메세지</a></h3></li>
-						<li class="nav-items py-1"><h3><a class="nav-link text-info font-weight-bold" href="#"><i class="bi bi-person-plus-fill text-info pr-2"></i>친구추가</a></h3></li>
-						<li class="nav-items"><h3><a class="nav-link text-info font-weight-bold" href="#"><i class="bi bi-search text-info pr-2"></i>검색</a></h3></li>
-						<li class="nav-items py-1"><h3><a class="nav-link text-info font-weight-bold" href="#"><i class="bi bi-universal-access text-info pr-2"></i>마이페이지</a></h3></li>
-						<li class="nav-items"><h3><a class="nav-link text-info font-weight-bold" href="#"><i class="bi bi-wrench-adjustable text-info pr-2"></i>설정</a></h3></li>				
+						<li class="nav-items py-1"><h3><a class="nav-link text-dark font-weight-bold" href="/post/timeline-view"><i class="bi bi-houses-fill text-dark pr-2"></i>홈</a></h3></li>
+						<li class="nav-items"><h3><a class="nav-link text-dark font-weight-bold" href="#"><i class="bi bi-chat-fill text-dark pr-2"></i>메세지</a></h3></li>
+						<li class="nav-items py-1"><h3><a class="nav-link text-dark font-weight-bold" href="#"><i class="bi bi-person-plus-fill text-dark pr-2"></i>친구추가</a></h3></li>
+						<li class="nav-items"><h3><a class="nav-link text-dark font-weight-bold" href="#"><i class="bi bi-search text-dark pr-2"></i>검색</a></h3></li>
+						<li class="nav-items py-1"><h3><a class="nav-link text-dark font-weight-bold" href="#"><i class="bi bi-universal-access text-dark pr-2"></i>마이페이지</a></h3></li>
+						<li class="nav-items"><h3><a class="nav-link text-dark font-weight-bold" href="#"><i class="bi bi-wrench-adjustable text-dark pr-2"></i>설정</a></h3></li>				
 					</ul>
 				</div>
 				<!-- /menu-list -->
 			</div>
 			<!-- /menu -->
+			
 			<!-- content -->
-			<div class="content d-flex justify-content-center bg-primary col-6 m-1">
-				<!-- timeLineList -->
-				<div class="timeLineList col-8 h-25 bg-white p-0 custom-border">		
+			<div class="content d-flex justify-content-center col-6 m-1 bg-white">
+			
+				<!-- timeLine -->
+				<div class="timeLine col-8 p-0 py-1">		
 					<!-- inputBox -->
-					<div>
+					<div class="input-box custom-border rounded">
 						<textarea rows="3" placeholder="나의 지금 상태를 입력해주세요." class="form-control border-0"></textarea>
+						<div class="d-flex justify-content-between px-2 pt-2">
+							<div>
+								<i class="bi bi-rocket-takeoff-fill icon-size-sm"></i>
+								<input type="file" class="d-none">
+							</div>
+							<button type="button" class="btn btn-sm">올리기</button>
+						</div>
 					</div>
 					<!-- /inputBox -->
-					<!-- inputButton -->
-					<div class="d-flex justify-content-between py-2">
-						<div>
-							<i class="bi bi-rocket-takeoff-fill icon-size-sm"></i>
-							<input type="file" class="d-none">
-						</div>
-						<button type="button" class="btn btn-sm">올리기</button>
-					</div>
-					<!-- /inputButton -->
-					<!--  -->
-					<div>
-						<div class="bg-warning d-flex justify-content-between align-items-center px-2">
+				
+					<!-- timeLineList -->
+					<div class="mt-2 custom-border rounded">
+						<div class="d-flex justify-content-between align-items-center px-2">
 							<b>원영도</b>
 							<i class="bi bi-three-dots icon-size-sm"></i>
 						</div>
-						<img class="w-100" alt="사진" src="/static/image/인스타그램 로고.jpg">
+						<div>
+							<img alt="인스타그램 로고" height="300" class="col-12 p-0" src="/static/image/인스타그램 로고.jpg"> 
+						</div>
+						<div class="d-flex">
+							<i class="bi bi-heart-fill icon-size-xs pl-1"></i>
+							<i class="bi bi-chat-dots-fill icon-size-xs px-2"></i>
+							<i class="bi bi-send-fill icon-size-xs"></i>						
+						</div>
+						<div class="border-top d-flex p-1">
+							<b class="pl-1 pr-4">원영도 : </b>
+							안녕하세요.
+						</div>
+						<div class="border-top small d-flex align-items-center justify-content-between p-1">
+							<b class="pl-1 pr-4">유재석 : </b>
+							다른 사용자들이 입력한 댓글들...
+							<button type="button" class="btn btn-sm p-0 ml-5">입력</button>
+						</div>
 					</div>
-					<!--  -->
+					<!-- /timeLineList -->
+				
 				</div>
-				<!-- /timeLineList -->
+				<!-- /timeLine -->
+			
 			</div>
 			<!-- /content -->
+			
 			<!-- user -->
-			<div class="user bg-info my-1"></div>
+			<div class="user bg-white my-1"></div>
 			<!-- /user -->
 			<!--  -->
 		</section>
