@@ -7,28 +7,25 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>		
-		<section class="d-flex justify-content-center">
+		<section class="d-flex justify-content-center bg-white my-1">
 			<div class="join-box col-4">
-				<div class="logo d-flex justify-content-center">
-					<div>
-						<img height="50" alt="인스타그램 로고" src="/static/image/인스타그램 로고.jpg">
-					</div>
-					<div>
-						<h2 class="text-info mt-1">Dostagram</h2>
-					</div>
+				<div class="logo d-flex justify-content-center pt-2">
+					<i class="bi bi-instagram icon-size-md"></i>				
+					<h2 class="text-dark pt-1 pl-1">Dostagram</h2>
 				</div>
 				<div class="join pt-3 ml-3 mr-3">
 					<div class="name-box">
-						<label class="text-info font-weight-bold">이름</label><input type="text" class="col-12 form-control mb-1" id="nameInput">
+						<label class="text-dark font-weight-bold">이름</label><input type="text" class="col-12 form-control mb-1" id="nameInput">
 						<div class="text-warning small d-none" id="nameCheck">이름을 입력해주세요!</div>	
 					</div>
 					<div class="id-box">
-						<label class="text-info font-weight-bold">아이디</label>
+						<label class="text-dark font-weight-bold">아이디</label>
 						<div class="d-flex">
 							<input type="text" class="col-9 form-control mb-1" id="idInput">
 							<button type="button" class="btn btn-success col-3 p-0 mb-1 font-weight-bold btn-sm" id="duplicateBtn">중복확인</button>
@@ -39,19 +36,19 @@
 						<div class="text-danger small d-none" id="duplicateId">중복된 아이디입니다.</div>	
 					</div>
 					<div>
-						<label class="text-info font-weight-bold">비밀번호</label><input type="password" class="col-12 form-control mb-1" id="passwordInput">
+						<label class="text-dark font-weight-bold">비밀번호</label><input type="password" class="col-12 form-control mb-1" id="passwordInput">
 						<div class="text-warning small d-none" id="passwordCheck">비밀번호를 입력해주세요!</div>	
 					</div>
 					<div>
-						<label class="text-info font-weight-bold">비밀번호 확인</label><input type="password" class="col-12 form-control mb-1" id="passwordCheckInput">
+						<label class="text-dark font-weight-bold">비밀번호 확인</label><input type="password" class="col-12 form-control mb-1" id="passwordCheckInput">
 						<div class="text-danger small d-none" id="missMatchPassword">비밀번호가 일치하지 않습니다!</div>	
 					</div>
 					<div>
-						<label class="text-info font-weight-bold">전화번호</label><input type="text" class="col-12 form-control mb-1" id="phoneNumberInput">
+						<label class="text-dark font-weight-bold">전화번호</label><input type="text" class="col-12 form-control mb-1" id="phoneNumberInput">
 						<div class="text-warning small d-none" id="phoneNumberCheck">전화번호를 입력해주세요!</div>	
 					</div>
 					<div>
-						<label class="text-info font-weight-bold">이메일</label><input type="text" class="col-12 form-control mb-4" id="emailInput">
+						<label class="text-dark font-weight-bold">이메일</label><input type="text" class="col-12 form-control mb-4" id="emailInput">
 						<div class="text-warning small d-none" id="emailCheck">이메일을 입력해주세요!</div>	
 					</div>
 					<button type="button" class="btn btn-block col-12 btn-success font-weight-bold" id="joinBtn">회원가입</button>

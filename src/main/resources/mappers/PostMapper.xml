@@ -10,11 +10,13 @@
 		(
 			userId
 			, contents
+			, imagePath
 		)
 		VALUE
 		(
 			#{userId}
 			, #{contents}
+			, #{imagePath}
 		)
  	</insert>
  	<select id="selectPost" resultType="com.tawny.dostagram.post.domain.Post">

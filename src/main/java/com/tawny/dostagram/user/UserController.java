@@ -35,5 +35,9 @@ public class UserController {
 		return "redirect:/user/login-view";
 	}
 
-
+	// 회원 정보 찾기 화면
+	@GetMapping("/find-view")
+	public String find() {
+		return "user/find";
+	}
 }

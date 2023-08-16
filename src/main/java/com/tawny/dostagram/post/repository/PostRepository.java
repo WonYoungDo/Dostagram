@@ -13,7 +13,8 @@ public interface PostRepository {
 	// 사용자가 업로드힌 게시물을 쿼리에 저장
 	public int insertPost(
 			@Param("userId") int userId
-			, @Param("contents") String contents);
+			, @Param("contents") String contents
+			, @Param("imagePath") String imagePath);
 	
 	// 여러 사용자들이 업로드한 게시물들을 가져오기
 	public List<Post> selectPost();
