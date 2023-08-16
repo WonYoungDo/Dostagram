@@ -54,9 +54,10 @@
 					<!-- /inputBox -->
 				
 					<!-- timeLineList -->
+					<c:forEach var="post" items="${postList }">
 					<div class="mt-2 custom-border rounded">
 						<div class="d-flex justify-content-between align-items-center px-2">
-							<b>${userName }</b>
+							<b>${post.userName }</b>
 							<i class="bi bi-three-dots icon-size-sm"></i>
 						</div>
 						<div>
@@ -68,8 +69,8 @@
 							<i class="bi bi-send-fill icon-size-xs"></i>						
 						</div>
 						<div class="border-top d-flex p-1">
-							<b class="pl-1 pr-4">${userName } : </b>
-							안녕하세요.
+							<b class="pl-1 pr-4">${post.userName } : </b>
+							${post.contents }
 						</div>
 						<div class="border-top small d-flex align-items-center justify-content-between p-1">
 							<b class="pl-1 pr-4">유재석 : </b>
@@ -77,6 +78,7 @@
 							<button type="button" class="btn btn-sm p-0 ml-5">입력</button>
 						</div>
 					</div>
+					</c:forEach>
 					<!-- /timeLineList -->
 				
 				</div>

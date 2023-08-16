@@ -17,4 +17,17 @@
 			, #{contents}
 		)
  	</insert>
+ 	<select id="selectPost" resultType="com.tawny.dostagram.post.domain.Post">
+ 		SELECT
+ 			`id`
+			, `userId`
+			, `contents`
+			, `imagePath`
+			, `createdAT`
+			, `updatedAT`
+   		FROM
+   			`post`
+		ORDER BY 
+			`id` DESC		
+ 	</select>
  </mapper>
