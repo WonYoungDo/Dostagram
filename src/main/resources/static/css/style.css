@@ -22,13 +22,13 @@ section > .find > .find-info > .find-pw {
 }
 
 
-
 section > .join-box > .logo {
 	height: 50px;
 }
 section > .join-box > .join {
 	height: 550px;	
 }
+
 
 section > .login-box > .logo {
 	height: 50px;
@@ -38,16 +38,13 @@ section > .login-box > .login {
 	height: 550px;	
 }
 
-section > .menu {
-	height: 600px;
-}
+
 
 section > .content > .timeLine > .input-box {
 	height: 135px;
 }
 
 section > .user {
-	height: 600px;
 	width: 300px;
 } 
 

@@ -18,5 +18,5 @@ public interface PostRepository {
 	
 	// 여러 사용자들이 업로드한 게시물들을 가져오기
 	public List<Post> selectPost();
-
+	
 }

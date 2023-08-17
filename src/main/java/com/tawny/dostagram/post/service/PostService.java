@@ -36,4 +36,5 @@ public class PostService {
 	public List<Post> getPostList() {
 		return postRepository.selectPost();					
 	}
+	
 }

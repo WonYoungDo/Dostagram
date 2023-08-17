@@ -56,12 +56,12 @@
 					<!-- timeLineList -->
 					<c:forEach var="post" items="${postList }">
 					<div class="mt-2 custom-border rounded">
-						<div class="d-flex justify-content-between align-items-center px-2">
-							<b>${post.userName }</b>
+						<div class="d-flex justify-content-between align-items-center px-2 bg-secondary text-white">
+							<b>${post.id}</b>
 							<i class="bi bi-three-dots icon-size-sm"></i>
 						</div>
 						<div>
-							<img alt="인스타그램 로고" height="300" class="col-12 p-0" src="/static/image/인스타그램 로고.jpg"> 
+							<img alt="${post.id}" class="w-100" src="${post.imagePath }">
 						</div>
 						<div class="d-flex">
 							<i class="bi bi-heart-fill icon-size-xs pl-1"></i>
@@ -70,7 +70,7 @@
 						</div>
 						<div class="border-top d-flex p-1">
 							<b class="pl-1 pr-4">원영도 : </b>
-							안녕하세요
+							${post.contents }
 						</div>
 						<div class="border-top small d-flex align-items-center justify-content-between p-1">
 							<b class="pl-1 pr-4">유재석 : </b>
@@ -118,12 +118,19 @@
 					alert("파일을 선택하세요");
 					return;
 				}
+	
+				var formData = new FormData();
+				formData.append("contents", contents);
+				formData.append("file", file.files[0]);
 				
 				
 				$.ajax({
 					type:"post"
 					, url:"/post/create"
-					, data:{"contents":contents}
+					, data:formData
+					, enctype:"multipart/form-data"
+					, processData:false
+					, contentType:false
 					, success:function(data) {
 						if(data.result == "success") {
 							location.reload();

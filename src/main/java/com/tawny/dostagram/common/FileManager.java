@@ -6,18 +6,22 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
 
 public class FileManager {
 
 	public static final String FILE_UPLOAD_PATH = "C:\\Users\\tawny\\Desktop\\JAVA-HELLOWORLD\\SpringProject\\upload\\dostagram";
 	
+	private static Logger logger = LoggerFactory.getLogger(FileManager.class);
 	
 	// 파일 저장 -> 경로 리턴 
 	public static String saveFile(int userId, MultipartFile file) {
 		
 		
 		if(file == null) {
+			logger.error("saveFile :: 파일없음");
 			return null;
 		}
 		
@@ -30,14 +34,16 @@ public class FileManager {
 		
 		File directory = new File(directoryPath); // -사용법
 		
-		if(!directory.mkdir()) { // 디렉토리가 생성되지 않았을 떄
+		if(!directory.mkdir()) { // 디렉토리가 생성되지 않았을 떄 / 디렉토리 경로를 넣으면 단서를 찾기 쉽다.
+			logger.error("saveFile :: 디렉토리 생성 에러 - 경로 : " + directoryPath);
 			return null;
 		}
 		
+		String filePath = null;
 		try {
 			byte[] byytes = file.getBytes();
 			
-			String filePath = directoryPath + file.getOriginalFilename();
+			filePath = directoryPath + file.getOriginalFilename();
 			
 			Path path = Paths.get(filePath);
 			
@@ -46,7 +52,8 @@ public class FileManager {
 		} catch (IOException e) {
 			e.printStackTrace();
 			
-			// 파일 저장 실패
+			// 파일 저장 실패 
+			logger.error("saveFile :: 파일 저장 실패 - 경로" + filePath);
 			return null;
 		}
 				
