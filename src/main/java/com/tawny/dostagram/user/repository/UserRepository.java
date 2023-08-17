@@ -14,4 +14,5 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 	
 	// 로그인 화면에서 아이디와 비밀번호가 일치하는지 확인해주는 메소드
 	public List<User> findByLoginIdAndPassword(String loginId, String password);
+	
 }

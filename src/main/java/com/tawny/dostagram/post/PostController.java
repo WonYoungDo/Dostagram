@@ -25,7 +25,7 @@ public class PostController {
 	public String timeLine(Model model, HttpSession session) {
 
 		// 사용자들이 업로드한 정보를 보여주는 기능
-		List<Post> postList = postService.getPostList();
+		List<Post> postList = postService.getPostList(userId);
 		model.addAttribute("postList", postList);
 		return "post/timeline";
 	}

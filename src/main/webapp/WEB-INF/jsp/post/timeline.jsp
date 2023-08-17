@@ -58,7 +58,7 @@
 					<div class="mt-2 custom-border rounded">
 						<div class="d-flex justify-content-between align-items-center px-2 bg-secondary text-white">
 							<b>${post.id}</b>
-							<i class="bi bi-three-dots icon-size-sm"></i>
+							<i class="bi bi-three-dots icon-size-sm" data-toggle="modal" data-target="#moreModal"></i>
 						</div>
 						<div>
 							<img alt="${post.id}" class="w-100" src="${post.imagePath }">
@@ -69,7 +69,7 @@
 							<i class="bi bi-send-fill icon-size-xs"></i>						
 						</div>
 						<div class="border-top d-flex p-1">
-							<b class="pl-1 pr-4">원영도 : </b>
+							<b class="pl-1 pr-4">${post.userName} </b>
 							${post.contents }
 						</div>
 						<div class="border-top small d-flex align-items-center justify-content-between p-1">
@@ -94,6 +94,16 @@
 		</section>
 		
 		<c:import url="/WEB-INF/jsp/include/footer.jsp"/>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="moreModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-body">
+	        삭제하기
+	      </div>
+	    </div>
+	  </div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -150,6 +160,5 @@
 			});
 		});
 	</script>
-	
 </body>
 </html>

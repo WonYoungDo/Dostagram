@@ -64,7 +64,10 @@ public class UserService {
 		} else {
 			return userList.get(0);
 		}
+	}	
+	
+	// post에서 userId를 얻어오기 위한 메소드
+	public User getUserId(int id) {
+		return userRepository.findById(id).orElse(null);
 	}
-	
-	
 }
