@@ -21,28 +21,23 @@
 				</div>
 				<div class="login pt-5">
 					<div class="pt-4 ml-3 mr-3">
-					
-						<select class="form-control">
-							<option class="text-center">원영도</option>
-							<option class="text-center">유재석</option>
-						</select> <br>
 						<form id="loginForm">
 							<div class="mb-2">
-								<label class="text-info font-weight-bold pt-3">아이디</label>
+								<label class="text-dark font-weight-bold pt-3">아이디</label>
 								<input type="text" class="col-12 form-control" id="idInput">
 								<div class="text-warning small d-none" id="idCheck">아이디를 입력해주세요!</div>	
 							</div>
 							<div class="mb-3">
-								<label class="text-info font-weight-bold">비밀번호</label>
+								<label class="text-dark font-weight-bold">비밀번호</label>
 								<input type="password" class="col-12 form-control" id="passwordInput">
 								<div class="text-warning small d-none" id="passwordCheck">비밀번호를 입력해주세요!</div>	
 							</div>
 							<div>
 								<div class="d-flex justify-content-between mb-3">
-									<a href="/user/join-view" class="btn col-3 btn-success p-0">회원가입</a>
-									<a href="#" class="btn btn-success p-0 col-6">아이디/비밀번호 찾기</a>
+									<a href="/user/join-view" class="btn col-3 btn-dark p-0">회원가입</a>
+									<a href="/user/find-view" class="btn btn-dark p-0 col-6">아이디/비밀번호 찾기</a>
 								</div>
-								<button type="submit" class="btn btn-block col-12 btn-success font-weight-bold" id="loginBtn">로그인</button>
+								<button type="submit" class="btn btn-block col-12 btn-dark font-weight-bold" id="loginBtn">로그인</button>
 							</div>
 						</form>
 					</div>

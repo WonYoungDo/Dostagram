@@ -33,22 +33,7 @@ public class PostService {
 	}
 	
 	// 사용자들이 업로드한 게시물들을 보여주는 기능
-	public List<PostDetail> getPostList() {
-	
-		List<Post> postList = postRepository.selectPost();
-															
-		List<PostDetail> postDetailList = new ArrayList<>();
-		for(Post post:postList) {
-			User user = userService.getUser(post.getUserId());
-		
-			PostDetail postDetail = PostDetail.builder()
-											  .id(post.getId())
-											  .contents(post.getContents())
-											  .imagePath(post.getImagePath())
-											  .userId(post.getUserId())
-											  .userName(post.userName())
-											  .build();
-		}
-		return postDetailList;											
+	public List<Post> getPostList() {
+		return postRepository.selectPost();					
 	}
 }

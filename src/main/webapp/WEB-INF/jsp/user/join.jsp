@@ -28,7 +28,7 @@
 						<label class="text-dark font-weight-bold">아이디</label>
 						<div class="d-flex">
 							<input type="text" class="col-9 form-control mb-1" id="idInput">
-							<button type="button" class="btn btn-success col-3 p-0 mb-1 font-weight-bold btn-sm" id="duplicateBtn">중복확인</button>
+							<button type="button" class="btn btn-dark col-3 p-0 mb-1 font-weight-bold btn-sm" id="duplicateBtn">중복확인</button>
 						</div>
 						<div class="text-warning small d-none" id="idCheck">아이디를 입력해주세요!</div>
 						<div class="text-primary small d-none" id="duplicatedCheck">중복확인을 해주세요!</div>	
@@ -51,7 +51,7 @@
 						<label class="text-dark font-weight-bold">이메일</label><input type="text" class="col-12 form-control mb-4" id="emailInput">
 						<div class="text-warning small d-none" id="emailCheck">이메일을 입력해주세요!</div>	
 					</div>
-					<button type="button" class="btn btn-block col-12 btn-success font-weight-bold" id="joinBtn">회원가입</button>
+					<button type="button" class="btn btn-block col-12 btn-dark font-weight-bold" id="joinBtn">회원가입</button>
 				</div>
 			</div>
 		</section>

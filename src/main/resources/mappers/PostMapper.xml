@@ -8,9 +8,9 @@
  		INSERT INTO
  			`post`
 		(
-			userId
-			, contents
-			, imagePath
+			`userId`
+			, `contents`
+			, `imagePath`
 		)
 		VALUE
 		(
@@ -29,7 +29,7 @@
 			, `updatedAT`
    		FROM
    			`post`
-		ORDER BY 
-			`id` DESC		
+ 		ORDER BY 
+ 			`id` DESC		
  	</select>
  </mapper>

@@ -28,14 +28,14 @@ public class PostRestController {
 			, HttpSession session) {
 		
 		int userId = (Integer)session.getAttribute("userId");
-		
+
 		int count = postService.addPost(userId, contents, file);
 		
 		Map<String, String> resultMap = new HashMap<>();
 		if(count == 1) {
 			resultMap.put("result", "success");
 		} else {
-			resultMap.put("result", "success");
+			resultMap.put("result", "fail");
 		}
 		return resultMap;
 	}

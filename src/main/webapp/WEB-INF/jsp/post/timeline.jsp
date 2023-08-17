@@ -69,8 +69,8 @@
 							<i class="bi bi-send-fill icon-size-xs"></i>						
 						</div>
 						<div class="border-top d-flex p-1">
-							<b class="pl-1 pr-4">${post.userName } : </b>
-							${post.contents }
+							<b class="pl-1 pr-4">원영도 : </b>
+							안녕하세요
 						</div>
 						<div class="border-top small d-flex align-items-center justify-content-between p-1">
 							<b class="pl-1 pr-4">유재석 : </b>
@@ -104,7 +104,7 @@
 			// 나의 상태 버튼 
 			$("#uploadBtn").on("click", function() {
 				let contents = $("#contentsInput").val();
-				let file = $("#addFile").val();
+				let file = $("#addFile")[0];
 			
 				// 유효성 검사
 				if(contents == "") {
@@ -113,6 +113,12 @@
 				} else {
 					$("#guideInput").addClass("d-none");
 				}
+				// 파일이 선택되지 않은 경우
+				if(file.files.length == 0) {
+					alert("파일을 선택하세요");
+					return;
+				}
+				
 				
 				$.ajax({
 					type:"post"

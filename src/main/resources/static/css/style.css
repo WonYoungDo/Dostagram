@@ -10,12 +10,18 @@ header {
 	height: 80px;
 }
 
+
 section > .find > .find-logo {
 	height: 100px;
 }
-section > .find > .find-info {
+section > .find > .find-info > .find-id {
 	height: 500px;
 }
+section > .find > .find-info > .find-pw {
+	height: 500px;
+}
+
+
 
 section > .join-box > .logo {
 	height: 50px;

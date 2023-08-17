@@ -2,6 +2,8 @@ package com.tawny.dostagram.post;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,8 +22,8 @@ public class PostController {
 	
 	// 타임라인 화면 
 	@GetMapping("/timeline-view")
-	public String timeLine(Model model) {
-		
+	public String timeLine(Model model, HttpSession session) {
+
 		// 사용자들이 업로드한 정보를 보여주는 기능
 		List<Post> postList = postService.getPostList();
 		model.addAttribute("postList", postList);
