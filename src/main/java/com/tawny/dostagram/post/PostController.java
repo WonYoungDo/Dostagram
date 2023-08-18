@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tawny.dostagram.post.domain.Post;
+import com.tawny.dostagram.post.dto.PostDetail;
 import com.tawny.dostagram.post.service.PostService;
 
 @Controller
@@ -23,9 +24,10 @@ public class PostController {
 	// 타임라인 화면 
 	@GetMapping("/timeline-view")
 	public String timeLine(Model model, HttpSession session) {
-
+		
+		int userId = (Integer)session.getAttribute("userId");
 		// 사용자들이 업로드한 정보를 보여주는 기능
-		List<Post> postList = postService.getPostList(userId);
+		List<PostDetail> postList = postService.getPostList(userId);
 		model.addAttribute("postList", postList);
 		return "post/timeline";
 	}

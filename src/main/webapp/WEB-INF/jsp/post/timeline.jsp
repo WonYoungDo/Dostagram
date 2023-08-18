@@ -57,7 +57,7 @@
 					<c:forEach var="post" items="${postList }">
 					<div class="mt-2 custom-border rounded">
 						<div class="d-flex justify-content-between align-items-center px-2 bg-secondary text-white">
-							<b>${post.id}</b>
+							<b>${post.userName}</b>
 							<i class="bi bi-three-dots icon-size-sm" data-toggle="modal" data-target="#moreModal"></i>
 						</div>
 						<div>
@@ -73,7 +73,7 @@
 							${post.contents }
 						</div>
 						<div class="border-top small d-flex align-items-center justify-content-between p-1">
-							<b class="pl-1 pr-4">유재석 : </b>
+							<b class="pl-1 pr-4">${post.userNam } : </b>
 							다른 사용자들이 입력한 댓글들...
 							<button type="button" class="btn btn-sm p-0 ml-5">입력</button>
 						</div>
