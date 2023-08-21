@@ -28,4 +28,17 @@ public class LikeRestController {
 		}
 		return resultMap;
 	}
+	
+	// 좋아요 취소 기능
+	@PostMapping("/post/unlike")
+	public Map<String, String> unlike(@RequestParam("postId") int postId) {
+		int count = likeService.like(postId, postId);
+		Map<String, String> resultMap = new HashMap<>();
+		if(count == 1) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
+		return resultMap;
+	}
 }

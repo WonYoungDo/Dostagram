@@ -7,8 +7,8 @@ import lombok.Getter;
 @Builder
 public class CommentDetail {
 	
+	private int id;
 	private int userId;
-	private int postId;
 	private String userName;
 	private String comment;
 	

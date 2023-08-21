@@ -20,17 +20,24 @@
  		)
  	</insert>
  	
- 	<select id="getCommentList" resultType="com.tawny.dostagram.comment.domain.Comment" parameterType="int">
+ 	<select id="selectCommentByPostId" resultType="com.tawny.dostagram.comment.domain.Comment" parameterType="int">
 		SELECT 
 			`id`
-			`postId`
-			`userId`
-			`comment`
-			`createdAT`
-			`updatedAT`
+			, `postId`
+			, `userId`
+			, `comment`
+			, `createdAT`
+			, `updatedAT`
 		FROM 
 			`comment`
 		WHERE 
 			`postId` = #{postId}
  	</select>
+ 	
+ 	<delete id="deleteComment" parameterType="int">
+ 		DELETE
+ 			`comment`
+		WHERE
+			`postId` = #{postId}	
+ 	</delete>
  </mapper>

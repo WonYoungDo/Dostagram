@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.tawny.dostagram.comment.dto.CommentDetail;
+import com.tawny.dostagram.comment.service.CommentService;
 import com.tawny.dostagram.common.FileManager;
 import com.tawny.dostagram.post.domain.Post;
 import com.tawny.dostagram.post.dto.PostDetail;
@@ -23,6 +25,9 @@ public class PostService {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private CommentService commentService;
+	
 	
 	// 사용자가 업로드한 게시물을 저장하는 기능
 	public int addPost(int userId, String contents, MultipartFile file) {
@@ -36,21 +41,23 @@ public class PostService {
 	public List<PostDetail> getPostList(int userId) {
 		
 		List<Post> postList = postRepository.selectPost();
-		
 		List<PostDetail> postDetailList	= new ArrayList<>();
 		
 		for(Post post : postList) {
-			User user = userService.getUserId(post.getId());
-			if(user != null) {
+			
+			List<CommentDetail> commentList = commentService.getCommentList(post.getId());
+			User user = userService.getUserId(post.getUserId());
+			
 				PostDetail postDetail = PostDetail.builder()
 												  .id(post.getId())
 												  .contents(post.getContents())
 												  .imagePath(post.getImagePath())
 												  .userId(post.getUserId())
 												  .userName(user.getName())
+												  .commentList(commentList)
 												  .build();									  
 				postDetailList.add(postDetail);
-			}
+			
 		}
 		return postDetailList;
 	}	

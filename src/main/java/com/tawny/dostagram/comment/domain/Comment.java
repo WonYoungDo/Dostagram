@@ -12,7 +12,7 @@ public class Comment {
 	private int id;
 	private int postId;
 	private int userId;
-	private String comments;
+	private String comment;
 	private Date createdAT;
 	private Date updatedAT;
 }

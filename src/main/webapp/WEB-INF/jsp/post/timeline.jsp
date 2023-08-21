@@ -78,9 +78,9 @@
 						</div>
 						<div class="small p-1">
 							<b>댓글</b> <br>
-							<b>이광수</b> 안녕하세요 <br>
-							<b>유재석</b> 아니요
-							
+							<c:forEach var="comment" items="${post.commentList }">
+								<b>${comment.userName }</b> ${comment.comment } <br>
+							</c:forEach>			
 						</div>
 						<div class="border-top d-flex align-items-center justify-content-between p-1">
 							<input type="text" class="form-control col-10" id="commentInput${post.id }">
@@ -166,6 +166,7 @@
 					}
 				});
 			});
+			
 			
 			// 나의 상태 버튼 
 			$("#uploadBtn").on("click", function() {

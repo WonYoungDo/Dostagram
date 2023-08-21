@@ -17,7 +17,8 @@ public interface CommentRepository {
 			, @Param("userId") int userId);
 	
 	// 댓글 리스트 불러오기
-	public List<Comment> getCommentList(int postId);
+	public List<Comment> selectCommentByPostId(int postId);
 	
-	
+	// 댓글 삭제 
+	public int deleteComment(@Param("postId") int postId);
 }
