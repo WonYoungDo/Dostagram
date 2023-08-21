@@ -63,19 +63,28 @@
 						<div>
 							<img alt="${post.id}" class="w-100" src="${post.imagePath }">
 						</div>
-						<div class="d-flex">
-							<i class="bi bi-heart-fill icon-size-xs pl-1"></i>
-							<i class="bi bi-chat-dots-fill icon-size-xs px-2"></i>
-							<i class="bi bi-send-fill icon-size-xs"></i>						
+						<div class="d-flex justify-content-between align-items-center">
+							<div class="d-flex align-items-center">
+								<i data-post-id="${post.id }" class="bi bi-heart-fill icon-size-xs px-1 like-btn"></i>
+								좋아요 2개
+							</div>
+							<div>							
+								<i class="bi bi-send-fill icon-size-xs pr-2"></i>						
+							</div>
 						</div>
 						<div class="border-top d-flex p-1">
 							<b class="pl-1 pr-4">${post.userName} </b>
 							${post.contents }
 						</div>
-						<div class="border-top small d-flex align-items-center justify-content-between p-1">
-							<b class="pl-1 pr-4">${post.userNam } : </b>
-							다른 사용자들이 입력한 댓글들...
-							<button type="button" class="btn btn-sm p-0 ml-5">입력</button>
+						<div class="small p-1">
+							<b>댓글</b> <br>
+							<b>이광수</b> 안녕하세요 <br>
+							<b>유재석</b> 아니요
+							
+						</div>
+						<div class="border-top d-flex align-items-center justify-content-between p-1">
+							<input type="text" class="form-control col-10" id="commentInput${post.id }">
+							<button type="button" class="btn comment-btn" data-post-id="${post.id }">입력</button>
 						</div>
 					</div>
 					</c:forEach>
@@ -110,6 +119,53 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<script>
 		$(document).ready(function() {
+			
+			// 댓글 입력 버튼
+			$(".comment-btn").on("click", function() {
+				
+				// 댓글 작성 게시글 id과 댓글 내용 필요
+				let postId = $(this).data("post-id");
+
+//				let comment = $("#commentInput" + postId).val();
+				let comment = $(this).prev().val();				
+
+				$.ajax({
+					type:"post"
+					, url:"/post/comment/create"
+					, data:{"postId":postId, "comment":comment}
+					, success:function(data) {
+						if(data.result == "success") {
+							location.reload();
+						} else {
+							alert("댓글 입력 실패");
+						}
+					}
+					, error:function() {
+						alert("댓글 에러");
+					}
+				});
+			});
+			
+			// 좋아요 
+			$(".like-btn").on("click", function() {
+				let postId = $(this).data("post-id");
+				
+				$.ajax({
+					type:"post"
+					, url:"/post/like"
+					, data:{"postId":postId}
+					, success:function(data) {
+						if(data.result == "success") {
+							location.reload();
+						} else {
+							alert("좋아요 실패");
+						}
+					}
+					, error:function() {
+						alert("좋아요 에러");
+					}
+				});
+			});
 			
 			// 나의 상태 버튼 
 			$("#uploadBtn").on("click", function() {

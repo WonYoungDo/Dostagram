@@ -38,21 +38,22 @@ public class PostService {
 		List<Post> postList = postRepository.selectPost();
 		
 		List<PostDetail> postDetailList	= new ArrayList<>();
-						 
+		
 		for(Post post : postList) {
-			
 			User user = userService.getUserId(post.getId());
-			
-			PostDetail postDetail = PostDetail.builder()
-											  .id(post.getId())
-											  .contents(post.getContents())
-											  .imagePath(post.getImagePath())
-											  .userId(post.getUserId())
-											  .userName(user.getName())
-											  .build();									  
-			postDetailList.add(postDetail);
+			if(user != null) {
+				PostDetail postDetail = PostDetail.builder()
+												  .id(post.getId())
+												  .contents(post.getContents())
+												  .imagePath(post.getImagePath())
+												  .userId(post.getUserId())
+												  .userName(user.getName())
+												  .build();									  
+				postDetailList.add(postDetail);
+			}
 		}
 		return postDetailList;
-	}
+	}	
+		
 	
 }

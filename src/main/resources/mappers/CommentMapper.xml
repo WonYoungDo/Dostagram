@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.tawny.dostagram.comment.repository.CommentRepository">
+ 	<insert id="insertComment">
+ 		INSERT INTO
+ 			`comment`
+		( 
+			`postId`
+			, `comment`
+			, `userId`
+		)	
+ 		VALUE
+ 		(
+ 			#{postId}
+			, #{comment}
+ 			, #{userId}
+ 		)
+ 	</insert>
+ 	
+ 	<select id="getCommentList" resultType="com.tawny.dostagram.comment.domain.Comment" parameterType="int">
+		SELECT 
+			`id`
+			`postId`
+			`userId`
+			`comment`
+			`createdAT`
+			`updatedAT`
+		FROM 
+			`comment`
+		WHERE 
+			`postId` = #{postId}
+ 	</select>
+ </mapper>
