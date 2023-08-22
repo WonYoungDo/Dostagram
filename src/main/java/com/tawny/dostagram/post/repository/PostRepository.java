@@ -19,4 +19,10 @@ public interface PostRepository {
 	// 여러 사용자들이 업로드한 게시물들을 가져오기
 	public List<Post> selectPost();
 	
+	
+	// 게시물의 아이디를 기반으로 한 행을 조회 
+	public Post selectPostId(@Param("id") int id);
+	
+	// postId를 기반으로 한 행 삭제
+	public int deletePost(@Param("postId") int PostId);
 }

@@ -47,8 +47,8 @@ public class CommentService {
 		return commentDetailList;
 	}
 	
-	// 사용자 본인이 입력한 댓글 삭제
-	public int deleteComment(int postId) {
-		return commentRepository.deleteComment(postId);
+	// 게시물을 삭제시 댓글 정보도 함께 삭제
+	public int deleteCommentByPostId(int postId) {
+		return commentRepository.deleteCommentByPostId(postId);
 	}
 }

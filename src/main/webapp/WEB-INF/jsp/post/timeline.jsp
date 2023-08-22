@@ -58,15 +58,24 @@
 					<div class="mt-2 custom-border rounded">
 						<div class="d-flex justify-content-between align-items-center px-2 bg-secondary text-white">
 							<b>${post.userName}</b>
-							<i class="bi bi-three-dots icon-size-sm" data-toggle="modal" data-target="#moreModal"></i>
+							<i data-post-id="${post.id }" class="bi bi-three-dots icon-size-sm" id="moreBtn" data-toggle="modal" data-target="#moreModal"></i>
 						</div>
 						<div>
 							<img alt="${post.id}" class="w-100" src="${post.imagePath }">
 						</div>
 						<div class="d-flex justify-content-between align-items-center">
 							<div class="d-flex align-items-center">
-								<i data-post-id="${post.id }" class="bi bi-heart-fill icon-size-xs px-1 like-btn"></i>
-								좋아요 2개
+								<c:choose>
+									<%-- 사용자가 좋아요를 눌렀을 때 --%>
+									<c:when test="${post.like }">
+										<i data-post-id="${post.id }" class="bi bi-heart-fill text-danger icon-size-xs px-1 unlike-btn"></i>
+									</c:when>
+									<%-- 사용자가 좋아요를 누르지 않았을 때 --%>
+									<c:otherwise>
+										<i data-post-id="${post.id }" class="bi bi-heart icon-size-xs px-1 like-btn"></i>
+									</c:otherwise>
+								</c:choose>
+								좋아요 ${post.likeCount }개
 							</div>
 							<div>							
 								<i class="bi bi-send-fill icon-size-xs pr-2"></i>						
@@ -109,7 +118,7 @@
 	  <div class="modal-dialog modal-dialog-centered" role="document">
 	    <div class="modal-content">
 	      <div class="modal-body">
-	        삭제하기
+	        <a href="#" id="deleteBtn">삭제하기</a>
 	      </div>
 	    </div>
 	  </div>
@@ -119,6 +128,32 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<script>
 		$(document).ready(function() {
+			
+			$("#deleteBtn").on("click", function() {
+				let postId = $(this).data("post-id");
+				
+				$.ajax({
+					type:"delete"
+					, url:"/post/delete"
+					, data:{"postId":postId}
+					, success:function(data) {
+						if(data.result == "success") {
+							location.reload();
+						} else {
+							alert("게시물 삭제 실패");
+						}
+					}
+					, error:function() {
+						alert("게시물 삭제 에러");
+					}
+				});
+			});
+			
+			// 게시물 삭제
+			$("#moreBtn").on("click", function() {
+				let postId = $(this).data("post-id");
+				$("#deleteBtn").data("postId", postId);
+			});
 			
 			// 댓글 입력 버튼
 			$(".comment-btn").on("click", function() {
@@ -142,6 +177,27 @@
 					}
 					, error:function() {
 						alert("댓글 에러");
+					}
+				});
+			});
+			
+			// 좋아요 취소
+			$(".unlike-btn").on("click", function() {
+				let postId = $(this).data("post-id");
+				
+				$.ajax({
+					type:"delete"
+					, url:"/post/unlike"
+					, data:{"postId":postId}
+					, success:function(data) {
+						if(data.result == "success") {
+							location.reload();
+						} else {
+							alert("좋아요 쉬소 실패");
+						}
+					}
+					, error:function() {
+						alert("좋아요 쉬소 에러");
 					}
 				});
 			});

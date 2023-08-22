@@ -32,4 +32,25 @@
  		ORDER BY 
  			`id` DESC		
  	</select>
+ 	
+ 	<select id="selectPostId" resultType="com.tawny.dostagram.post.domain.Post" parameterType="int">
+ 		SELECT
+ 			`id`
+			, `userId`
+			, `contents`
+			, `imagePath`
+			, `createdAT`
+			, `updatedAT`
+   		FROM
+   			`post`	
+   		WHERE
+   			`id` = #{id}
+ 	</select>
+ 	
+ 	<delete id="deletePost" parameterType="int">
+ 		DELETE FROM
+ 			`post`
+		WHERE
+			`postId` = #{postId}
+ 	</delete>
  </mapper>
