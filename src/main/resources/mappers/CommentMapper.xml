@@ -34,8 +34,8 @@
 			`postId` = #{postId}
  	</select>
  	
- 	<delete id="deleteComment" parameterType="int">
- 		DELETE
+ 	<delete id="deleteCommentByPostId" parameterType="int">
+ 		DELETE FROM
  			`comment`
 		WHERE
 			`postId` = #{postId}	

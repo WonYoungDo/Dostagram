@@ -20,4 +20,10 @@ public class PostDetail {
 	
 	// 댓글 목록
 	private List<CommentDetail> commentList;
+	
+	// 좋아요 개수
+	private int likeCount;
+	
+	// 좋아요 여부
+	private boolean isLike;
 }
