@@ -48,10 +48,14 @@
 						<div class="text-warning small d-none" id="phoneNumberCheck">전화번호를 입력해주세요!</div>	
 					</div>
 					<div>
-						<label class="text-dark font-weight-bold">이메일</label><input type="text" class="col-12 form-control mb-4" id="emailInput">
+						<label class="text-dark font-weight-bold">이메일</label><input type="text" class="col-12 form-control mb-3" id="emailInput">
 						<div class="text-warning small d-none" id="emailCheck">이메일을 입력해주세요!</div>	
 					</div>
 					<button type="button" class="btn btn-block col-12 btn-dark font-weight-bold" id="joinBtn">회원가입</button>
+					
+					<div class="d-flex justify-content-end pt-2 mb-3">
+						<a href="/user/login-view" class="btn col-3 btn-dark p-0">로그인</a>
+					</div>
 				</div>
 			</div>
 		</section>

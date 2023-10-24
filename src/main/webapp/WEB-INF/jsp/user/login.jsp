@@ -20,24 +20,23 @@
 						<h2 class="text-dark pt-1 pl-1">Dostagram</h2>
 				</div>
 				<div class="login pt-5">
-					<div class="pt-4 ml-3 mr-3">
+					<div class="pt-5 ml-3 mr-3">
 						<form id="loginForm">
 							<div class="mb-2">
 								<label class="text-dark font-weight-bold pt-3">아이디</label>
 								<input type="text" class="col-12 form-control" id="idInput">
 								<div class="text-warning small d-none" id="idCheck">아이디를 입력해주세요!</div>	
 							</div>
-							<div class="mb-3">
+							<div class="mb-4">
 								<label class="text-dark font-weight-bold">비밀번호</label>
 								<input type="password" class="col-12 form-control" id="passwordInput">
 								<div class="text-warning small d-none" id="passwordCheck">비밀번호를 입력해주세요!</div>	
 							</div>
 							<div>
-								<div class="d-flex justify-content-between mb-3">
-									<a href="/user/join-view" class="btn col-3 btn-dark p-0">회원가입</a>
-									<a href="/user/find-view" class="btn btn-dark p-0 col-6">아이디/비밀번호 찾기</a>
-								</div>
 								<button type="submit" class="btn btn-block col-12 btn-dark font-weight-bold" id="loginBtn">로그인</button>
+								<div class="d-flex justify-content-end mb-3 pt-2">
+									<a href="/user/join-view" class="btn col-3 btn-dark p-0">회원가입</a>
+								</div>
 							</div>
 						</form>
 					</div>
