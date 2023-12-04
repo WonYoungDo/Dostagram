@@ -15,7 +15,7 @@
 		<c:import url="/WEB-INF/jsp/include/header.jsp"/>
 		<section class="d-flex">
 			<!-- menu -->
-			<div class="menu col-3 my-1 bg-white">
+			<div class="menu col-3 my-1">
 				<!-- current-page -->
 				<div class="py-4 text-center text-dark"><h1>타임라인</h1></div>
 				<!-- /current-page -->			
